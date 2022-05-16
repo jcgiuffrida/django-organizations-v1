@@ -203,7 +203,7 @@ Your URLs can be configured as normal::
 
     urlpatterns = [
         ...
-        url(r'^invite/', include(invitation_backend().get_urls())),
+        re_path(r'^invite/', include(invitation_backend().get_urls())),
     ]
 
 The `invitation_backend` function simply returns the URL patterns from the

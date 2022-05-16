@@ -94,8 +94,8 @@ main application URL conf as well as your chosen invitation backend URLs::
 
     urlpatterns = [
         ...
-        url(r'^accounts/', include('organizations.urls')),
-        url(r'^invitations/', include(invitation_backend().get_urls())),
+        re_path(r'^accounts/', include('organizations.urls')),
+        re_path(r'^invitations/', include(invitation_backend().get_urls())),
     ]
 
 Auto slug field

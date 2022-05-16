@@ -31,7 +31,7 @@ import inspect
 import uuid
 
 from django.conf import settings
-from django.conf.urls import url
+from django.urls import re_path
 from django.contrib.auth import authenticate
 from django.contrib.auth import get_user_model
 from django.contrib.auth import login
@@ -185,11 +185,11 @@ class RegistrationBackend(BaseBackend):
 
     def get_urls(self):
         return [
-            url(r'^complete/$', view=self.success_view,
+            re_path(r'^complete/$', view=self.success_view,
                 name="registration_success"),
-            url(r'^(?P<user_id>[\d]+)-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+            re_path(r'^(?P<user_id>[\d]+)-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
                 view=self.activate_view, name="registration_register"),
-            url(r'^$', view=self.create_view, name="registration_create"),
+            re_path(r'^$', view=self.create_view, name="registration_create"),
         ]
 
     def register_by_email(self, email, sender=None, request=None, **kwargs):
@@ -268,7 +268,7 @@ class InvitationBackend(BaseBackend):
     def get_urls(self):
         # TODO enable naming based on a model?
         return [
-            url(r'^(?P<user_id>[\d]+)-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+            re_path(r'^(?P<user_id>[\d]+)-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
                 view=self.activate_view, name="invitations_register"),
         ]
 
