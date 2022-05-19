@@ -3,6 +3,12 @@
 History
 =======
 
+1.1.3 (2022-05-19)
+-------------------
+
+* (Changed by Metopio) Compatibility with Django 4.0.
+
+
 1.1.2 (2019-06-24)
 -------------------
 
